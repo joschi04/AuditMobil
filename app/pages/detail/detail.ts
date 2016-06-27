@@ -34,11 +34,9 @@ export class DetailPage implements OnInit, OnDestroy {
     this.AntwortenVm.Antworten.forEach(element => {
           if (element.value === this.Frage.antwort){
             element.checked = true;
-            element.caption += "x";
           }
           else{
             element.checked = false;
-            element.caption += "y";
           }
         });
   }
