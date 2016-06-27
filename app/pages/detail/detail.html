@@ -1,0 +1,56 @@
+<!--
+  Generated template for the DetailPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar>
+  
+  <ion-title>Detailansicht</ion-title>
+</ion-navbar>
+
+<ion-content padding class="detail">
+  <ion-card>
+
+  <ion-card-header>
+    {{Frage.titel}}
+  </ion-card-header>
+
+  <ion-card-content>
+    {{Frage.beschreibung}}
+  </ion-card-content>
+
+</ion-card>
+  <ion-list radio-group>
+    <ion-list-header>
+      Bewertung ({{Frage.antwort}})
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Ja</ion-label>
+      <ion-radio (click)="setRatioValue(ja.value)" value="ja" [checked]="isChecked(ja.value)" #ja></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nein</ion-label>
+      <ion-radio (click)="setRatioValue(nein.value)" value="nein" [checked]="isChecked(nein.value)" #nein></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Unbekannt</ion-label>
+      <ion-radio (click)="setRatioValue(unbekannt.value)" value="unbekannt" [checked]="isChecked(unbekannt.value)" #unbekannt></ion-radio>
+    </ion-item>
+    
+  </ion-list>
+  
+  <ion-list-header>
+    Risiko ({{Frage.risiko}} %)
+  </ion-list-header>
+  <ion-item>
+  <ion-range min="0" max="100" step="10" snaps="true" [(ngModel)]="Frage.risiko" danger>
+    <ion-icon range-left small danger name="thermometer"></ion-icon>
+    <ion-icon range-right danger name="thermometer"></ion-icon>
+  </ion-range>
+ </ion-item>
+
+</ion-content>

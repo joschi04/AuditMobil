@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 import {Observable}     from 'rxjs/Observable';
 
 import "rxjs/add/operator/map";
@@ -25,6 +25,11 @@ export class FragenRepository {
     public GetFragen(){
       return this._af.database.list("/fragen/")
             .catch(this.handleError);
+    }
+
+    public GetFrage(key:any):FirebaseObjectObservable<any>{ 
+      return this._af.database.object("/fragen/" + key + "/");
+            //.catch(this.handleError);
     }
 
     private handleError (error) {
